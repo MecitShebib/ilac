@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ilac</title>
+    <link href="style.css" rel="stylesheet" />
+    <!-- css.gg -->
+    <link href='https://css.gg/css' rel='stylesheet'>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+
+</head>
+<body>
+    <div id="header" class="flex">
+        <div class="button"><a href="./home.html">Home</a></div>
+        <div class="button"><a href="./tow.html">cuzdan</a></div>
+        <div class="button"><a href="./three.html">iletişim</a></div>
+        <div class="button flex" style="margin-left:50%">
+            <i class="zmdi zmdi-account" style="font-size:large; margin-right:10px;"></i>
+            <div><a href="./profile.html">Profile</a></div>
+        </div>
+    </div>
+    <div id="header2" class="flex">
+        <div id="logo"><img data-testid="main-image" src="??????"></div>
+        <div id="search" class="flex">
+            <div id="search_icon"><i class="gg-search"></i></div>
+            <input class="input" type="search" name="name" value="" />
+        </div>
+    </div>
+
+
+
+    
+    <div id="app">
+        <div class="sidebar">
+            <section class="cameras">
+                <h2>Cameras</h2>
+                <ul>
+                    <li v-if="cameras.length === 0" class="empty">No cameras found</li>
+                    <li v-for="camera in cameras">
+                        <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)" class="active">{{ formatName(camera.name) }}</span>
+                        <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)">
+                            <a @click.stop="selectCamera(camera)">{{ formatName(camera.name) }}</a>
+                        </span>
+                    </li>
+                </ul>
+            </section>
+            <section class="scans">
+                <h2>Scans</h2>
+                <ul v-if="scans.length === 0">
+                    <li class="empty">No scans yet</li>
+                </ul>
+                <transition-group name="scans" tag="ul">
+                    <li v-for="scan in scans" :key="scan.date" :title="scan.content">{{ scan.content }}</li>
+                </transition-group>
+            </section>
+        </div>
+        <div class="preview-container">
+            <video id="preview"></video>
+        </div>
+    </div>
+    <script type="text/javascript" src="app.js"></script>
+
+
+
+
+    <!--
+    <center>
+        <div id="bbb">
+            <video id="vid"></video>
+        </div>
+        <br />
+        <button id="but" autoplay>
+            Open WebCam
+        </button>
+    </center>
+    -->
+    <!--
+            <div class="container-fluid">
+                <div class="text-center">
+                    <img src="https://chart.googleapis.com/chart?cht=qr&chl=Hello+World&chs=160x160&chld=L|0"
+                         class="qr-code img-thumbnail img-responsive" />
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2"
+                               for="content">
+                            Content:
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" size="60"
+                                   maxlength="60" class="form-control"
+                                   id="content" placeholder="Enter content" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-default" id="generate">Generate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <script>
+                function htmlEncode(value) {
+                    return $('<div/>').text(value)
+                        .html();
+                }
+                $(function () {
+                    $('#generate').click(function () {
+                        let finalURL =
+                            'https://chart.googleapis.com/chart?cht=qr&chl=' +
+                            htmlEncode($('#content').val()) +
+                            '&chs=160x160&chld=L|0'
+                        $('.qr-code').attr('src', finalURL);
+                    });
+                });
+            </script>
+        -->
+
+</body>
+    </html>
