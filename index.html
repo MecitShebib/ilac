@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -30,9 +30,6 @@
         </div>
     </div>
 
-
-
-    
     <div id="app">
         <div class="sidebar">
             <section class="cameras">
@@ -47,13 +44,14 @@
                     </li>
                 </ul>
             </section>
-            <section class="scans">
+            <section class="scans" action="connect.php" method="post">
                 <h2>Scans</h2>
                 <ul v-if="scans.length === 0">
                     <li class="empty">No scans yet</li>
                 </ul>
                 <transition-group name="scans" tag="ul">
-                    <li v-for="scan in scans" :key="scan.date" :title="scan.content">{{ scan.content }}</li>
+                    <li name="ilac">vitamin</li>
+                    <li v-for="scan in scans" :key="scan.date" :title="scan.content" name="karekod">{{ scan.content }}</li>
                 </transition-group>
             </section>
         </div>
@@ -63,7 +61,7 @@
     </div>
     <script type="text/javascript" src="app.js"></script>
 
-
+    
 
 
     <!--
