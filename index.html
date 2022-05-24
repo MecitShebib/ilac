@@ -44,14 +44,13 @@
                     </li>
                 </ul>
             </section>
-            <section class="scans" action="connect.php" method="post">
+            <section class="scans">
                 <h2>Scans</h2>
                 <ul v-if="scans.length === 0">
                     <li class="empty">No scans yet</li>
                 </ul>
                 <transition-group name="scans" tag="ul">
-                    <li name="ilac">vitamin</li>
-                    <li v-for="scan in scans" :key="scan.date" :title="scan.content" name="karekod">{{ scan.content }}</li>
+                    <li v-for="scan in scans" :key="scan.date" :title="scan.content">{{ scan.content }}</li>
                 </transition-group>
             </section>
         </div>
@@ -62,7 +61,13 @@
     <script type="text/javascript" src="app.js"></script>
 
     
-
+    <form action="php/DataBase.php" method="post">
+        <label for="ilac">First name:</label><br>
+        <input type="text" id="ilac" name="ilac" value="John"><br>
+        <label for="karekod">Last name:</label><br>
+        <input type="text" id="karekod" name="karekod" value="Doe"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 
     <!--
     <center>
